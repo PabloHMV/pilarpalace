@@ -25,59 +25,80 @@
     }
 
     :root{
-      --pp-blue:#1f4fa3;     /* azul da logo */
-      --pp-blue2:#2b73d6;    /* azul claro */
-      --pp-green:#18b86a;    /* verde da logo */
-      --pp-yellow:#f6c21a;   /* amarelo sol */
-      --pp-gray:#2f2f2f;     /* cinza texto */
-      --pp-bg:#f7fafc;       /* fundo claro */
+      --pp-blue:#1f4fa3;
+      --pp-blue2:#2b73d6;
+      --pp-green:#18b86a;
+      --pp-yellow:#f6c21a;
+      --pp-gray:#2f2f2f;
+      --pp-bg:#f7fafc;
     }
 
     .pp-gradient {
       background:
-        radial-gradient(800px 400px at 20% -10%, rgba(246,194,26,.22), transparent 60%),
-        radial-gradient(800px 400px at 85% 10%, rgba(43,115,214,.18), transparent 60%),
-        radial-gradient(900px 500px at 50% 110%, rgba(24,184,106,.16), transparent 65%),
+        radial-gradient(900px 500px at 20% -10%, rgba(246,194,26,.22), transparent 60%),
+        radial-gradient(900px 500px at 85% 10%, rgba(43,115,214,.18), transparent 60%),
+        radial-gradient(1000px 600px at 50% 110%, rgba(24,184,106,.16), transparent 65%),
         linear-gradient(180deg, #ffffff, var(--pp-bg));
     }
 
     .pp-card {
-      background: rgba(255,255,255,.9);
-      border: 1px solid rgba(31,79,163,.10);
-      box-shadow: 0 10px 30px rgba(15, 23, 42, .08);
-      backdrop-filter: blur(6px);
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(31,79,163,.12);
+      box-shadow: 0 14px 40px rgba(15, 23, 42, .10);
+      backdrop-filter: blur(8px);
     }
 
     .pp-icon {
-      width: 46px; height: 46px;
-      border-radius: 14px;
+      width: 50px; height: 50px;
+      border-radius: 16px;
       display:flex; align-items:center; justify-content:center;
       color:white;
-      box-shadow: 0 10px 20px rgba(0,0,0,.12);
+      box-shadow: 0 12px 24px rgba(0,0,0,.14);
+    }
+
+    .pp-divider {
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(24,184,106,.20), rgba(43,115,214,.18), rgba(246,194,26,.18));
+      border: 1px solid rgba(31,79,163,.10);
     }
   </style>
 </head>
 
 <body class="pp-gradient min-h-screen">
-  <main class="max-w-md mx-auto px-5 pt-7 pb-8">
+  <main class="max-w-md mx-auto px-5 pt-6 pb-8">
 
-    <!-- Topo -->
-    <header class="flex items-center gap-3 mb-6">
-      <!-- Troque pelo caminho da sua logo, se quiser -->
-      <!-- <img src="logoHotel.jpeg" class="w-12 h-12 rounded-2xl object-contain bg-white p-1 shadow" alt="Logo"> -->
+    <!-- Header bonitão -->
+    <header class="pp-card rounded-[28px] p-4 mb-5">
+      <div class="flex items-center gap-3">
+        <!-- Logo -->
+        <div class="w-14 h-14 rounded-2xl bg-white shadow-sm border border-black/5 flex items-center justify-center overflow-hidden">
+          <img src="logoHotel.jpeg" alt="Pilar Palace Hotel" class="w-full h-full object-contain p-1">
+        </div>
 
-      <div class="flex-1">
-        <h1 class="text-[18px] font-extrabold tracking-tight" style="color:var(--pp-gray);">
-          Pilar Palace Hotel
-        </h1>
-        <p class="text-[13px] opacity-80" style="color:var(--pp-gray);">
-          Acesso rápido
-        </p>
+        <div class="flex-1">
+          <h1 class="text-[18px] font-extrabold tracking-tight" style="color:var(--pp-gray);">
+            Pilar Palace Hotel
+          </h1>
+          <p class="text-[13px] opacity-80" style="color:var(--pp-gray);">
+            Acesso rápido • Morro do Pilar
+          </p>
+        </div>
+
+        <!-- bolinha "sol" -->
+        <div class="w-10 h-10 rounded-2xl flex items-center justify-center"
+             style="background:rgba(246,194,26,.18); border:1px solid rgba(246,194,26,.28);">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="var(--pp-gray)" stroke-width="2">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+          </svg>
+        </div>
       </div>
 
-      <div class="w-9 h-9 rounded-2xl flex items-center justify-center"
-           style="background:rgba(31,79,163,.10); border:1px solid rgba(31,79,163,.12);">
-        <span class="text-[14px] font-bold" style="color:var(--pp-blue);">PP</span>
+      <div class="mt-3 pp-divider"></div>
+
+      <div class="mt-3 text-[12px] opacity-80" style="color:var(--pp-gray);">
+        Toque em um card para abrir 👇
       </div>
     </header>
 
@@ -89,7 +110,6 @@
          class="pp-card rounded-3xl p-4 active:scale-[0.99] transition-transform">
         <div class="flex items-center gap-4">
           <div class="pp-icon" style="background:linear-gradient(135deg,var(--pp-blue),var(--pp-blue2));">
-            <!-- ícone -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-6 h-6">
               <path d="M3 7h11v10H3z"></path>
               <path d="M14 10h4l3 3v4h-7z"></path>
@@ -100,7 +120,7 @@
 
           <div class="flex-1">
             <h2 class="text-[16px] font-extrabold" style="color:var(--pp-gray);">Tele-Entregas</h2>
-          <!--  <p class="text-[13px] opacity-80" style="color:var(--pp-gray);"></p>-->
+            <p class="text-[13px] opacity-80" style="color:var(--pp-gray);">Peça com rapidez</p>
           </div>
 
           <span class="text-[12px] font-bold px-3 py-1 rounded-full"
@@ -111,7 +131,7 @@
       </a>
 
       <!-- Site -->
-      <a href="https://pilarpalacehotel.com.br"
+      <a href="index.html"
          class="pp-card rounded-3xl p-4 active:scale-[0.99] transition-transform">
         <div class="flex items-center gap-4">
           <div class="pp-icon" style="background:linear-gradient(135deg,var(--pp-green),#20d07a);">
@@ -125,7 +145,7 @@
 
           <div class="flex-1">
             <h2 class="text-[16px] font-extrabold" style="color:var(--pp-gray);">Site</h2>
-            <p class="text-[13px] opacity-80" style="color:var(--pp-gray);">Ver informações e novidades</p>
+            <p class="text-[13px] opacity-80" style="color:var(--pp-gray);">Informações e novidades</p>
           </div>
 
           <span class="text-[12px] font-bold px-3 py-1 rounded-full"
@@ -149,7 +169,7 @@
 
           <div class="flex-1">
             <h2 class="text-[16px] font-extrabold" style="color:var(--pp-gray);">Instagram</h2>
-            <p class="text-[13px] opacity-80" style="color:var(--pp-gray);">Acompanhar fotos e avisos</p>
+            <p class="text-[13px] opacity-80" style="color:var(--pp-gray);">Fotos e avisos</p>
           </div>
 
           <span class="text-[12px] font-bold px-3 py-1 rounded-full"
@@ -159,8 +179,8 @@
         </div>
       </a>
 
-      <!-- WhatsApp -->
-      <a href="wa.me/5531995311839"
+      <!-- WhatsApp (corrigido com https) -->
+      <a href="https://wa.me/5531995311839?text=Ol%C3%A1!%20Quero%20informa%C3%A7%C3%B5es%20sobre%20reservas."
          class="pp-card rounded-3xl p-4 active:scale-[0.99] transition-transform">
         <div class="flex items-center gap-4">
           <div class="pp-icon" style="background:linear-gradient(135deg,#25D366,#128C7E);">
@@ -184,7 +204,7 @@
 
     </section>
 
-    <!-- Botão menor: Avalie-nos -->
+    <!-- Avalie-nos -->
     <footer class="mt-5">
       <a href="https://g.page/r/CcKb43UpsGJGEAE/review"
          class="block text-center rounded-2xl py-3 font-extrabold text-[14px] active:scale-[0.99] transition-transform"
