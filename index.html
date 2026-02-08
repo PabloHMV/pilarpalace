@@ -9,6 +9,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
     />
+
     <style>
       .text-gradient {
         background-clip: text;
@@ -16,8 +17,121 @@
         -webkit-text-fill-color: transparent;
         color: transparent;
       }
+
+      /* ========= TEMA GLOBAL (cores via variáveis) ========= */
+      :root {
+        --pp-bg: #f9fafb; /* bg-gray-50 */
+        --pp-header: #ffffff; /* bg-white */
+        --pp-overlay: rgba(0, 0, 0, 0.4);
+        --pp-accent1: #2563eb; /* blue-600 */
+        --pp-accent2: #22d3ee; /* cyan-400 */
+        --pp-section: #eff6ff; /* blue-50 */
+      }
+
+      body {
+        background: var(--pp-bg) !important;
+      }
+      header {
+        background: var(--pp-header) !important;
+      }
+      .pp-hero-overlay {
+        background: var(--pp-overlay) !important;
+      }
+      .pp-title-gradient {
+        background-image: linear-gradient(
+          to right,
+          var(--pp-accent1),
+          var(--pp-accent2)
+        ) !important;
+      }
+      .pp-section {
+        background: var(--pp-section) !important;
+      }
+
+      /* ========= CLASSES DE TEMA (só mudam variáveis) ========= */
+      body.tema-ano-novo {
+        --pp-bg: #07101f;
+        --pp-header: rgba(255, 255, 255, 0.92);
+        --pp-overlay: rgba(0, 0, 0, 0.55);
+        --pp-accent1: #60a5fa;
+        --pp-accent2: #22d3ee;
+        --pp-section: #0b1a34;
+      }
+
+      body.tema-carnaval {
+        --pp-bg: #120a2b;
+        --pp-header: rgba(255, 255, 255, 0.92);
+        --pp-overlay: rgba(0, 0, 0, 0.55);
+        --pp-accent1: #a78bfa;
+        --pp-accent2: #22d3ee;
+        --pp-section: #1b0f3f;
+      }
+
+      body.tema-pascoa {
+        --pp-bg: #fff7e6;
+        --pp-header: #fffaf0;
+        --pp-overlay: rgba(0, 0, 0, 0.35);
+        --pp-accent1: #f59e0b;
+        --pp-accent2: #22c55e;
+        --pp-section: #fffbeb;
+      }
+
+      body.tema-sexta-santa {
+        --pp-bg: #0b0b0b;
+        --pp-header: rgba(255, 255, 255, 0.92);
+        --pp-overlay: rgba(0, 0, 0, 0.6);
+        --pp-accent1: #e5e7eb;
+        --pp-accent2: #94a3b8;
+        --pp-section: #111827;
+      }
+
+      body.tema-tiradentes {
+        --pp-bg: #f4f4f5;
+        --pp-header: #ffffff;
+        --pp-overlay: rgba(0, 0, 0, 0.35);
+        --pp-accent1: #2563eb;
+        --pp-accent2: #0ea5e9;
+        --pp-section: #e0f2fe;
+      }
+
+      body.tema-independencia {
+        --pp-bg: #062214;
+        --pp-header: rgba(255, 255, 255, 0.92);
+        --pp-overlay: rgba(0, 0, 0, 0.55);
+        --pp-accent1: #22c55e;
+        --pp-accent2: #facc15;
+        --pp-section: #052e1a;
+      }
+
+      body.tema-aparecida {
+        --pp-bg: #081a3a;
+        --pp-header: rgba(255, 255, 255, 0.92);
+        --pp-overlay: rgba(0, 0, 0, 0.55);
+        --pp-accent1: #60a5fa;
+        --pp-accent2: #facc15;
+        --pp-section: #0b2452;
+      }
+
+      body.tema-republica {
+        --pp-bg: #111827;
+        --pp-header: rgba(255, 255, 255, 0.92);
+        --pp-overlay: rgba(0, 0, 0, 0.55);
+        --pp-accent1: #22c55e;
+        --pp-accent2: #60a5fa;
+        --pp-section: #0b1220;
+      }
+
+      body.tema-natal {
+        --pp-bg: #06261a;
+        --pp-header: rgba(255, 255, 255, 0.92);
+        --pp-overlay: rgba(0, 0, 0, 0.55);
+        --pp-accent1: #22c55e;
+        --pp-accent2: #ef4444;
+        --pp-section: #052e1a;
+      }
     </style>
   </head>
+
   <body class="bg-gray-50 font-sans">
     <!-- Header -->
     <header class="fixed w-full bg-white shadow-md z-50 backdrop-blur-sm">
@@ -29,12 +143,13 @@
           class="flex items-center space-x-4 text-gray-900 hover:opacity-90"
         >
           <img
+            id="logo-site"
             src="Imagens/logoHotel.jpeg"
             alt="Logo Pilar Palace"
             class="h-12 w-12 rounded-full object-cover"
           />
           <span
-            class="text-3xl font-extrabold tracking-wide text-gradient bg-gradient-to-r from-blue-600 to-cyan-400"
+            class="text-3xl font-extrabold tracking-wide text-gradient bg-gradient-to-r from-blue-600 to-cyan-400 pp-title-gradient"
           >
             Pilar Palace Hotel
           </span>
@@ -120,12 +235,13 @@
     <!-- Banner -->
     <section class="relative">
       <img
+        id="banner-site"
         src="Imagens/imagemhotel.jpeg"
         alt="Fachada do hotel"
         class="w-full h-96 object-cover"
       />
       <div
-        class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center"
+        class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center pp-hero-overlay"
       >
         <h2 class="text-4xl sm:text-5xl text-white font-bold">
           Bem-vindo ao Pilar Palace Hotel
@@ -146,53 +262,78 @@
       </p>
     </section>
 
- <!-- Destaques -->
-<section class="bg-blue-50 py-10">
-  <div class="max-w-6xl mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-    
-    <a href="Suites/" class="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
-      <img
-        src="Imagens/suite.png"
-        alt="Quartos"
-        class="mx-auto max-w-[80px] aspect-square object-cover rounded-lg shadow-sm transition-shadow duration-300 hover:shadow-lg mb-4"
-      />
-      <h4 class="text-xl font-semibold text-blue-800 mb-2">Nossos Quartos</h4>
-      <p class="text-sm text-gray-600">Conforto e tranquilidade em cada detalhe.</p>
-    </a>
-    
-    <a href="Cafe_da_Manha/" class="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
-      <img
-        src="Imagens/cafe.png"
-        alt="Café da Manhã"
-        class="mx-auto max-w-[80px] aspect-square object-cover rounded-lg shadow-sm transition-shadow duration-300 hover:shadow-lg mb-4"
-      />
-      <h4 class="text-xl font-semibold text-blue-800 mb-2">Café da Manhã</h4>
-      <p class="text-sm text-gray-600">Sabores artesanais e ambiente acolhedor.</p>
-    </a>
-    
-    <a href="Pontos_Turisticos/" class="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
-      <img
-        src="Imagens/fazer.png"
-        alt="Pontos Turísticos"
-        class="mx-auto max-w-[80px] aspect-square object-cover rounded-lg shadow-sm transition-shadow duration-300 hover:shadow-lg mb-4"
-      />
-      <h4 class="text-xl font-semibold text-blue-800 mb-2">O que Fazer</h4>
-      <p class="text-sm text-gray-600">Conheça as belezas de Morro do Pilar.</p>
-    </a>
-    
-    <a href="Contato/" class="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
-      <img
-        src="Imagens/contato.png"
-        alt="Contato"
-        class="mx-auto max-w-[80px] aspect-square object-cover rounded-lg shadow-sm transition-shadow duration-300 hover:shadow-lg mb-4"
-      />
-      <h4 class="text-xl font-semibold text-blue-800 mb-2">Fale Conosco</h4>
-      <p class="text-sm text-gray-600">Dúvidas, reservas e mais informações.</p>
-    </a>
-    
-  </div>
-</section>
+    <!-- Destaques -->
+    <section class="bg-blue-50 py-10 pp-section">
+      <div
+        class="max-w-6xl mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center"
+      >
+        <a
+          href="Suites/"
+          class="bg-white p-6 rounded-lg shadow hover:shadow-md transition"
+        >
+          <img
+            src="Imagens/suite.png"
+            alt="Quartos"
+            class="mx-auto max-w-[80px] aspect-square object-cover rounded-lg shadow-sm transition-shadow duration-300 hover:shadow-lg mb-4"
+          />
+          <h4 class="text-xl font-semibold text-blue-800 mb-2">
+            Nossos Quartos
+          </h4>
+          <p class="text-sm text-gray-600">
+            Conforto e tranquilidade em cada detalhe.
+          </p>
+        </a>
 
+        <a
+          href="Cafe_da_Manha/"
+          class="bg-white p-6 rounded-lg shadow hover:shadow-md transition"
+        >
+          <img
+            src="Imagens/cafe.png"
+            alt="Café da Manhã"
+            class="mx-auto max-w-[80px] aspect-square object-cover rounded-lg shadow-sm transition-shadow duration-300 hover:shadow-lg mb-4"
+          />
+          <h4 class="text-xl font-semibold text-blue-800 mb-2">
+            Café da Manhã
+          </h4>
+          <p class="text-sm text-gray-600">
+            Sabores artesanais e ambiente acolhedor.
+          </p>
+        </a>
+
+        <a
+          href="Pontos_Turisticos/"
+          class="bg-white p-6 rounded-lg shadow hover:shadow-md transition"
+        >
+          <img
+            src="Imagens/fazer.png"
+            alt="Pontos Turísticos"
+            class="mx-auto max-w-[80px] aspect-square object-cover rounded-lg shadow-sm transition-shadow duration-300 hover:shadow-lg mb-4"
+          />
+          <h4 class="text-xl font-semibold text-blue-800 mb-2">O que Fazer</h4>
+          <p class="text-sm text-gray-600">
+            Conheça as belezas de Morro do Pilar.
+          </p>
+        </a>
+
+        <a
+          href="Contato/"
+          class="bg-white p-6 rounded-lg shadow hover:shadow-md transition"
+        >
+          <img
+            src="Imagens/contato.png"
+            alt="Contato"
+            class="mx-auto max-w-[80px] aspect-square object-cover rounded-lg shadow-sm transition-shadow duration-300 hover:shadow-lg mb-4"
+          />
+          <h4 class="text-xl font-semibold text-blue-800 mb-2">
+            Fale Conosco
+          </h4>
+          <p class="text-sm text-gray-600">
+            Dúvidas, reservas e mais informações.
+          </p>
+        </a>
+      </div>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12 mt-10">
@@ -226,12 +367,183 @@
 
     <!-- Scripts -->
     <script>
-      document
-        .getElementById("btn-menu")
-        .addEventListener("click", function () {
-          const menuMobile = document.getElementById("menu-mobile");
-          menuMobile.classList.toggle("hidden");
+      // Menu mobile
+      document.getElementById("btn-menu").addEventListener("click", function () {
+        const menuMobile = document.getElementById("menu-mobile");
+        menuMobile.classList.toggle("hidden");
+      });
+
+      /* ========= TEMA + TROCA DE IMAGENS (TODO ANO POR DD/MM) ========= */
+      function startOfDay(d) {
+        return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+      }
+      function parseDM(dm, year) {
+        const [dd, mm] = dm.split("/").map(Number);
+        return new Date(year, mm - 1, dd);
+      }
+      function isBetween(date, start, end) {
+        const t = startOfDay(date).getTime();
+        return (
+          t >= startOfDay(start).getTime() && t <= startOfDay(end).getTime()
+        );
+      }
+
+      // 🔧 Resolve caminho para a pasta Imagens a partir de qualquer subpasta
+      function imagensPath(file) {
+        const depth = location.pathname.split("/").filter(Boolean).length - 1;
+        const back = depth > 0 ? "../".repeat(depth) : "";
+        return back + "Imagens/" + file;
+      }
+
+      // ✅ Configure aqui: períodos + arquivos em Imagens/
+      // Se dois temas baterem no mesmo dia, ganha o que estiver primeiro.
+      const THEMES = [
+        {
+          cls: "tema-carnaval",
+          startDM: "20/01",
+          endDM: "20/02",
+          banner: "banner_carnaval.jpg",
+          logo: "logocarnaval.jpg",
+        },
+        {
+          cls: "tema-pascoa",
+          startDM: "01/04",
+          endDM: "08/04",
+          banner: "banner_pascoa.jpg",
+          logo: "logo_pascoa.jpg",
+        },
+        {
+          cls: "tema-sexta-santa",
+          startDM: "03/04",
+          endDM: "05/04",
+          banner: "banner_sexta_santa.jpg",
+          logo: "logo_sexta_santa.jpg",
+        },
+        {
+          cls: "tema-tiradentes",
+          startDM: "18/04",
+          endDM: "22/04",
+          banner: "banner_tiradentes.jpg",
+          logo: "logo_tiradentes.jpg",
+        },
+        {
+          cls: "tema-independencia",
+          startDM: "05/09",
+          endDM: "09/09",
+          banner: "banner_independencia.jpg",
+          logo: "logo_independencia.jpg",
+        },
+        {
+          cls: "tema-aparecida",
+          startDM: "08/10",
+          endDM: "15/10",
+          banner: "banner_aparecida.jpg",
+          logo: "logo_aparecida.jpg",
+        },
+        {
+          cls: "tema-republica",
+          startDM: "12/11",
+          endDM: "17/11",
+          banner: "banner_republica.jpg",
+          logo: "logo_republica.jpg",
+        },
+        {
+          cls: "tema-natal",
+          startDM: "15/12",
+          endDM: "28/12",
+          banner: "banner_natal.jpg",
+          logo: "logo_natal.jpg",
+        },
+        // cruza o ano (funciona)
+        {
+          cls: "tema-ano-novo",
+          startDM: "28/12",
+          endDM: "03/01",
+          banner: "banner_ano_novo.jpg",
+          logo: "logo_ano_novo.jpg",
+        },
+      ];
+
+      const DEFAULTS = {
+        banner: "imagemhotel.jpeg",
+        logo: "logoHotel.jpeg",
+      };
+
+      // ✅ Modo teste por URL:
+      // exemplo: index.html?tema=tema-natal&banner=banner_natal.jpg&logo=logo_natal.jpg
+      function getQueryParam(name) {
+        return new URLSearchParams(window.location.search).get(name);
+      }
+      function forceThemeFromURL() {
+        const tema = getQueryParam("tema");
+        if (!tema) return false;
+
+        document.body.className = document.body.className
+          .split(" ")
+          .filter((c) => !c.startsWith("tema-"))
+          .join(" ");
+
+        document.body.classList.add(tema);
+
+        const banner = getQueryParam("banner");
+        const logo = getQueryParam("logo");
+
+        const bannerEl = document.getElementById("banner-site");
+        const logoEl = document.getElementById("logo-site");
+
+        if (bannerEl && banner) bannerEl.src = imagensPath(banner);
+        if (logoEl && logo) logoEl.src = imagensPath(logo);
+
+        return true;
+      }
+
+      function applyTheme() {
+        const today = new Date();
+        const year = today.getFullYear();
+
+        // remove temas anteriores
+        document.body.className = document.body.className
+          .split(" ")
+          .filter((c) => !c.startsWith("tema-"))
+          .join(" ");
+
+        const match = THEMES.find((t) => {
+          const startThis = parseDM(t.startDM, year);
+          const endThis = parseDM(t.endDM, year);
+
+          if (endThis >= startThis) {
+            return isBetween(today, startThis, endThis);
+          } else {
+            // cruza o ano
+            const startPrev = parseDM(t.startDM, year - 1);
+            const endNow = parseDM(t.endDM, year);
+            const startNow = parseDM(t.startDM, year);
+            const endNext = parseDM(t.endDM, year + 1);
+            return (
+              isBetween(today, startPrev, endNow) ||
+              isBetween(today, startNow, endNext)
+            );
+          }
         });
+
+        const bannerEl = document.getElementById("banner-site");
+        const logoEl = document.getElementById("logo-site");
+
+        if (match) {
+          document.body.classList.add(match.cls);
+
+          if (bannerEl && match.banner) bannerEl.src = imagensPath(match.banner);
+          if (logoEl && match.logo) logoEl.src = imagensPath(match.logo);
+        } else {
+          if (bannerEl) bannerEl.src = imagensPath(DEFAULTS.banner);
+          if (logoEl) logoEl.src = imagensPath(DEFAULTS.logo);
+        }
+      }
+
+      // ✅ Primeiro tenta o teste por URL, senão aplica normal por data
+      if (!forceThemeFromURL()) {
+        applyTheme();
+      }
     </script>
   </body>
 </html>
