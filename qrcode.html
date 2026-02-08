@@ -1,333 +1,204 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pilar Palace Hotel</title>
 
-  <!-- Tailwind CDN (rápido pra usar no VS Code) -->
+  <!-- Tailwind via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
+    /* Força: só mobile */
+    @media (min-width: 768px) {
+      body::before{
+        content:"Esta página é exclusiva para celular.";
+        position:fixed; inset:0;
+        display:flex; align-items:center; justify-content:center;
+        background:#0b1220;
+        color:white;
+        font: 600 18px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial;
+        z-index:9999;
+        padding:24px;
+        text-align:center;
+      }
+    }
+
     :root{
-      /* Paleta inspirada na sua logo */
-      --blue-1:#0D3B8E;   /* azul escuro */
-      --blue-2:#1E86D9;   /* azul claro */
-      --green:#1FBF63;    /* verde */
-      --yellow:#F4B400;   /* amarelo sol */
-      --dark:#1F2937;     /* cinza escuro */
-      --light:#F7FAFC;    /* fundo */
+      --pp-blue:#1f4fa3;     /* azul da logo */
+      --pp-blue2:#2b73d6;    /* azul claro */
+      --pp-green:#18b86a;    /* verde da logo */
+      --pp-yellow:#f6c21a;   /* amarelo sol */
+      --pp-gray:#2f2f2f;     /* cinza texto */
+      --pp-bg:#f7fafc;       /* fundo claro */
     }
-    .bg-brand-gradient{
-      background: radial-gradient(900px 400px at 20% 0%, rgba(30,134,217,.25), transparent 60%),
-                  radial-gradient(900px 400px at 80% 10%, rgba(31,191,99,.18), transparent 60%),
-                  linear-gradient(180deg, rgba(13,59,142,.06), rgba(244,180,0,.04));
+
+    .pp-gradient {
+      background:
+        radial-gradient(800px 400px at 20% -10%, rgba(246,194,26,.22), transparent 60%),
+        radial-gradient(800px 400px at 85% 10%, rgba(43,115,214,.18), transparent 60%),
+        radial-gradient(900px 500px at 50% 110%, rgba(24,184,106,.16), transparent 65%),
+        linear-gradient(180deg, #ffffff, var(--pp-bg));
     }
-    .ring-brand{
-      box-shadow: 0 0 0 1px rgba(13,59,142,.10), 0 12px 30px rgba(13,59,142,.10);
+
+    .pp-card {
+      background: rgba(255,255,255,.9);
+      border: 1px solid rgba(31,79,163,.10);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, .08);
+      backdrop-filter: blur(6px);
+    }
+
+    .pp-icon {
+      width: 46px; height: 46px;
+      border-radius: 14px;
+      display:flex; align-items:center; justify-content:center;
+      color:white;
+      box-shadow: 0 10px 20px rgba(0,0,0,.12);
     }
   </style>
 </head>
 
-<body class="min-h-screen bg-[color:var(--light)] text-[color:var(--dark)]">
-  <!-- Top bar -->
-  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-black/5">
-    <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <img src="logo.png" alt="Pilar Palace Hotel" class="h-10 w-10 object-contain" />
-        <div class="leading-tight">
-          <div class="font-extrabold tracking-tight text-[color:var(--blue-1)]">Pilar Palace</div>
-          <div class="text-xs text-black/60 -mt-0.5">Hotel</div>
-        </div>
-      </div>
+<body class="pp-gradient min-h-screen">
+  <main class="max-w-md mx-auto px-5 pt-7 pb-8">
 
-      <a
-        href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1%21%20Quero%20fazer%20uma%20reserva."
-        target="_blank" rel="noopener"
-        class="hidden sm:inline-flex items-center gap-2 rounded-xl px-4 py-2 font-semibold text-white
-               bg-[color:var(--green)] hover:opacity-95 transition"
-      >
-        <!-- Whats icon -->
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-          <path d="M20 11.5a8.5 8.5 0 0 1-12.7 7.4L4 20l1.2-3.1A8.5 8.5 0 1 1 20 11.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-          <path d="M9.2 9.3c.2-.5.5-.5.8-.5h.6c.2 0 .4.1.5.3l.9 1.9c.1.2.1.4 0 .6l-.5.7c-.1.2-.1.4 0 .6.5.9 1.4 1.6 2.4 2 .2.1.4.1.6 0l.7-.4c.2-.1.4-.1.6 0l1.8 1c.2.1.3.3.3.5v.6c0 .4 0 .7-.4.8-.7.3-1.6.5-2.3.3-2.2-.5-5.2-3.2-6-5.5-.3-.8-.1-1.6.2-2.3Z" fill="currentColor" opacity=".9"/>
-        </svg>
-        Reservar no WhatsApp
-      </a>
-    </div>
-  </header>
+    <!-- Topo -->
+    <header class="flex items-center gap-3 mb-6">
+      <!-- Troque pelo caminho da sua logo, se quiser -->
+      <!-- <img src="logoHotel.jpeg" class="w-12 h-12 rounded-2xl object-contain bg-white p-1 shadow" alt="Logo"> -->
 
-  <!-- Hero -->
-  <section class="bg-brand-gradient">
-    <div class="mx-auto max-w-6xl px-4 py-12 sm:py-16 grid lg:grid-cols-2 gap-10 items-center">
-      <div>
-        <div class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold
-                    bg-white ring-1 ring-black/5">
-          <span class="h-2.5 w-2.5 rounded-full bg-[color:var(--yellow)]"></span>
-          Morro do Pilar • MG
-        </div>
-
-        <h1 class="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight">
-          Conforto, vista e tranquilidade no
-          <span class="text-[color:var(--blue-1)]">Pilar Palace Hotel</span>
+      <div class="flex-1">
+        <h1 class="text-[18px] font-extrabold tracking-tight" style="color:var(--pp-gray);">
+          Pilar Palace Hotel
         </h1>
-
-        <p class="mt-4 text-base sm:text-lg text-black/70 leading-relaxed">
-          Hospedagem com atendimento acolhedor, quartos confortáveis e uma experiência
-          completa para descansar ou viajar a trabalho.
+        <p class="text-[13px] opacity-80" style="color:var(--pp-gray);">
+          Acesso rápido
         </p>
-
-        <div class="mt-6 flex flex-col sm:flex-row gap-3">
-          <a href="#reservas"
-             class="rounded-2xl px-5 py-3 font-bold text-white bg-[color:var(--blue-1)] hover:opacity-95 transition">
-            Fazer reserva
-          </a>
-
-          <a href="#quartos"
-             class="rounded-2xl px-5 py-3 font-bold bg-white ring-1 ring-black/10 hover:bg-black/5 transition">
-            Ver quartos
-          </a>
-        </div>
-
-        <!-- Mobile quick icons -->
-        <div class="mt-7 sm:hidden grid grid-cols-2 gap-3">
-          <a class="rounded-2xl p-4 bg-white ring-1 ring-black/10 ring-brand flex items-center gap-3"
-             href="https://instagram.com/SEUINSTAGRAM" target="_blank" rel="noopener">
-            <div class="h-11 w-11 rounded-xl grid place-items-center bg-[color:var(--blue-2)] text-white">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Z" stroke="currentColor" stroke-width="2"/>
-                <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" stroke-width="2"/>
-                <path d="M17.5 6.5h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div>
-              <div class="font-extrabold">Instagram</div>
-              <div class="text-xs text-black/60">Ver novidades</div>
-            </div>
-          </a>
-
-          <a class="rounded-2xl p-4 bg-white ring-1 ring-black/10 ring-brand flex items-center gap-3"
-             href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1%21%20Quero%20fazer%20uma%20reserva."
-             target="_blank" rel="noopener">
-            <div class="h-11 w-11 rounded-xl grid place-items-center bg-[color:var(--green)] text-white">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                <path d="M20 11.5a8.5 8.5 0 0 1-12.7 7.4L4 20l1.2-3.1A8.5 8.5 0 1 1 20 11.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <div class="font-extrabold">WhatsApp</div>
-              <div class="text-xs text-black/60">Falar agora</div>
-            </div>
-          </a>
-        </div>
       </div>
 
-      <!-- Card destaque -->
-      <div class="bg-white rounded-3xl p-6 sm:p-7 ring-brand border border-black/5">
-        <div class="flex items-center justify-between gap-4">
-          <div>
-            <div class="text-sm font-semibold text-black/60">Check-in / Check-out</div>
-            <div class="mt-1 font-extrabold text-[color:var(--blue-1)]">Horários flexíveis</div>
-          </div>
-          <div class="h-12 w-12 rounded-2xl grid place-items-center bg-[color:var(--yellow)] text-white">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M7 3v3M17 3v3M4 8h16M6 12h3M6 16h3M11 12h3M11 16h3M16 12h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M6 5h12a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2"/>
+      <div class="w-9 h-9 rounded-2xl flex items-center justify-center"
+           style="background:rgba(31,79,163,.10); border:1px solid rgba(31,79,163,.12);">
+        <span class="text-[14px] font-bold" style="color:var(--pp-blue);">PP</span>
+      </div>
+    </header>
+
+    <!-- Cards -->
+    <section class="grid grid-cols-1 gap-3">
+
+      <!-- Tele-Entregas -->
+      <a href="tele-entregas.html"
+         class="pp-card rounded-3xl p-4 active:scale-[0.99] transition-transform">
+        <div class="flex items-center gap-4">
+          <div class="pp-icon" style="background:linear-gradient(135deg,var(--pp-blue),var(--pp-blue2));">
+            <!-- ícone -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-6 h-6">
+              <path d="M3 7h11v10H3z"></path>
+              <path d="M14 10h4l3 3v4h-7z"></path>
+              <path d="M7 17a2 2 0 1 0 0.001 0z"></path>
+              <path d="M17 17a2 2 0 1 0 0.001 0z"></path>
             </svg>
           </div>
-        </div>
 
-        <div class="mt-6 grid grid-cols-2 gap-3">
-          <div class="rounded-2xl p-4 bg-[color:rgba(13,59,142,.06)] border border-[color:rgba(13,59,142,.12)]">
-            <div class="text-xs text-black/60">Localização</div>
-            <div class="font-extrabold">Morro do Pilar</div>
+          <div class="flex-1">
+            <h2 class="text-[16px] font-extrabold" style="color:var(--pp-gray);">Tele-Entregas</h2>
+            <p class="text-[13px] opacity-80" style="color:var(--pp-gray);">Peça sem sair do lugar</p>
           </div>
-          <div class="rounded-2xl p-4 bg-[color:rgba(31,191,99,.08)] border border-[color:rgba(31,191,99,.18)]">
-            <div class="text-xs text-black/60">Atendimento</div>
-            <div class="font-extrabold">WhatsApp</div>
+
+          <span class="text-[12px] font-bold px-3 py-1 rounded-full"
+                style="background:rgba(246,194,26,.18); color:var(--pp-gray); border:1px solid rgba(246,194,26,.25);">
+            Abrir
+          </span>
+        </div>
+      </a>
+
+      <!-- Site -->
+      <a href="https://pilarpalacehotel.com.br"
+         class="pp-card rounded-3xl p-4 active:scale-[0.99] transition-transform">
+        <div class="flex items-center gap-4">
+          <div class="pp-icon" style="background:linear-gradient(135deg,var(--pp-green),#20d07a);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-6 h-6">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M2 12h20"></path>
+              <path d="M12 2a15 15 0 0 1 0 20"></path>
+              <path d="M12 2a15 15 0 0 0 0 20"></path>
+            </svg>
           </div>
-          <div class="rounded-2xl p-4 bg-[color:rgba(30,134,217,.08)] border border-[color:rgba(30,134,217,.16)]">
-            <div class="text-xs text-black/60">Conforto</div>
-            <div class="font-extrabold">Quartos completos</div>
+
+          <div class="flex-1">
+            <h2 class="text-[16px] font-extrabold" style="color:var(--pp-gray);">Site</h2>
+            <p class="text-[13px] opacity-80" style="color:var(--pp-gray);">Ver informações e novidades</p>
           </div>
-          <div class="rounded-2xl p-4 bg-[color:rgba(244,180,0,.10)] border border-[color:rgba(244,180,0,.20)]">
-            <div class="text-xs text-black/60">Experiência</div>
-            <div class="font-extrabold">Ambiente tranquilo</div>
+
+          <span class="text-[12px] font-bold px-3 py-1 rounded-full"
+                style="background:rgba(24,184,106,.16); color:var(--pp-gray); border:1px solid rgba(24,184,106,.22);">
+            Visitar
+          </span>
+        </div>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://instagram.com/SEUINSTAGRAM"
+         class="pp-card rounded-3xl p-4 active:scale-[0.99] transition-transform">
+        <div class="flex items-center gap-4">
+          <div class="pp-icon" style="background:linear-gradient(135deg,var(--pp-yellow),#ff8a00); color:#1f1f1f;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-6 h-6">
+              <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <path d="M17.5 6.5h.01"></path>
+            </svg>
           </div>
-        </div>
 
-        <div class="mt-6 flex gap-3">
-          <a href="#reservas"
-             class="flex-1 text-center rounded-2xl px-5 py-3 font-extrabold text-white bg-[color:var(--blue-1)] hover:opacity-95 transition">
-            Reservar
-          </a>
-          <a href="#contato"
-             class="flex-1 text-center rounded-2xl px-5 py-3 font-extrabold bg-white ring-1 ring-black/10 hover:bg-black/5 transition">
-            Contato
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Destaques -->
-  <section class="mx-auto max-w-6xl px-4 py-12">
-    <h2 class="text-2xl sm:text-3xl font-extrabold">Por que escolher o <span class="text-[color:var(--blue-1)]">Pilar Palace</span>?</h2>
-    <p class="mt-2 text-black/70">Alguns pontos que os hóspedes mais valorizam.</p>
-
-    <div class="mt-7 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div class="rounded-3xl bg-white p-6 border border-black/5 ring-brand">
-        <div class="font-extrabold text-[color:var(--green)]">✅ Atendimento rápido</div>
-        <p class="mt-2 text-black/70">Responda e feche reservas direto no WhatsApp.</p>
-      </div>
-      <div class="rounded-3xl bg-white p-6 border border-black/5 ring-brand">
-        <div class="font-extrabold text-[color:var(--blue-2)]">🛏️ Conforto</div>
-        <p class="mt-2 text-black/70">Quartos organizados e prontos para descansar.</p>
-      </div>
-      <div class="rounded-3xl bg-white p-6 border border-black/5 ring-brand">
-        <div class="font-extrabold text-[color:var(--yellow)]">📍 Boa localização</div>
-        <p class="mt-2 text-black/70">Fácil acesso e ótima experiência na região.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Quartos -->
-  <section id="quartos" class="mx-auto max-w-6xl px-4 pb-12">
-    <div class="flex items-end justify-between gap-4">
-      <div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold">Quartos</h2>
-        <p class="mt-2 text-black/70">Troque os textos conforme seus tipos de quarto.</p>
-      </div>
-      <a href="#reservas" class="hidden sm:inline font-bold text-[color:var(--blue-1)] hover:underline">Reservar →</a>
-    </div>
-
-    <div class="mt-7 grid md:grid-cols-3 gap-4">
-      <article class="rounded-3xl bg-white border border-black/5 ring-brand overflow-hidden">
-        <div class="h-40 bg-[color:rgba(13,59,142,.10)] grid place-items-center text-[color:var(--blue-1)] font-extrabold">
-          Foto do Quarto
-        </div>
-        <div class="p-6">
-          <h3 class="font-extrabold text-lg">Standard</h3>
-          <p class="mt-2 text-black/70 text-sm">Ideal para 1–2 pessoas, com conforto e praticidade.</p>
-          <div class="mt-4 flex gap-2">
-            <span class="text-xs font-bold px-3 py-1 rounded-full bg-[color:rgba(31,191,99,.12)] text-[color:var(--green)]">Wi-Fi</span>
-            <span class="text-xs font-bold px-3 py-1 rounded-full bg-[color:rgba(30,134,217,.12)] text-[color:var(--blue-2)]">Ar</span>
+          <div class="flex-1">
+            <h2 class="text-[16px] font-extrabold" style="color:var(--pp-gray);">Instagram</h2>
+            <p class="text-[13px] opacity-80" style="color:var(--pp-gray);">Acompanhar fotos e avisos</p>
           </div>
-        </div>
-      </article>
 
-      <article class="rounded-3xl bg-white border border-black/5 ring-brand overflow-hidden">
-        <div class="h-40 bg-[color:rgba(31,191,99,.12)] grid place-items-center text-[color:var(--green)] font-extrabold">
-          Foto do Quarto
+          <span class="text-[12px] font-bold px-3 py-1 rounded-full"
+                style="background:rgba(31,79,163,.10); color:var(--pp-blue); border:1px solid rgba(31,79,163,.14);">
+            Seguir
+          </span>
         </div>
-        <div class="p-6">
-          <h3 class="font-extrabold text-lg">Duplo</h3>
-          <p class="mt-2 text-black/70 text-sm">Mais espaço e conforto para casal ou amigos.</p>
-          <div class="mt-4 flex gap-2">
-            <span class="text-xs font-bold px-3 py-1 rounded-full bg-[color:rgba(244,180,0,.16)] text-[color:var(--yellow)]">Café</span>
-            <span class="text-xs font-bold px-3 py-1 rounded-full bg-[color:rgba(13,59,142,.12)] text-[color:var(--blue-1)]">TV</span>
+      </a>
+
+      <!-- WhatsApp -->
+      <a href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1!%20Quero%20informa%C3%A7%C3%B5es%20sobre%20reservas."
+         class="pp-card rounded-3xl p-4 active:scale-[0.99] transition-transform">
+        <div class="flex items-center gap-4">
+          <div class="pp-icon" style="background:linear-gradient(135deg,#25D366,#128C7E);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-6 h-6">
+              <path d="M21 11.5a8.5 8.5 0 0 1-12.7 7.3L3 20l1.3-5.2A8.5 8.5 0 1 1 21 11.5z"></path>
+              <path d="M8.5 9.5c.3 2 3 4.7 5 5"></path>
+            </svg>
           </div>
-        </div>
-      </article>
 
-      <article class="rounded-3xl bg-white border border-black/5 ring-brand overflow-hidden">
-        <div class="h-40 bg-[color:rgba(244,180,0,.12)] grid place-items-center text-[color:var(--yellow)] font-extrabold">
-          Foto do Quarto
-        </div>
-        <div class="p-6">
-          <h3 class="font-extrabold text-lg">Família</h3>
-          <p class="mt-2 text-black/70 text-sm">Perfeito para família, com mais camas e espaço.</p>
-          <div class="mt-4 flex gap-2">
-            <span class="text-xs font-bold px-3 py-1 rounded-full bg-[color:rgba(31,191,99,.12)] text-[color:var(--green)]">Conforto</span>
-            <span class="text-xs font-bold px-3 py-1 rounded-full bg-[color:rgba(30,134,217,.12)] text-[color:var(--blue-2)]">Silêncio</span>
+          <div class="flex-1">
+            <h2 class="text-[16px] font-extrabold" style="color:var(--pp-gray);">WhatsApp</h2>
+            <p class="text-[13px] opacity-80" style="color:var(--pp-gray);">Falar com a recepção</p>
           </div>
+
+          <span class="text-[12px] font-bold px-3 py-1 rounded-full"
+                style="background:rgba(18,140,126,.12); color:var(--pp-gray); border:1px solid rgba(18,140,126,.18);">
+            Chamar
+          </span>
         </div>
-      </article>
-    </div>
-  </section>
+      </a>
 
-  <!-- Reservas -->
-  <section id="reservas" class="mx-auto max-w-6xl px-4 pb-14">
-    <div class="rounded-[2rem] bg-white border border-black/5 ring-brand p-6 sm:p-8">
-      <div class="grid lg:grid-cols-2 gap-8 items-center">
-        <div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold">
-            Faça sua reserva em 1 minuto
-          </h2>
-          <p class="mt-2 text-black/70">
-            Clique no WhatsApp e diga a data de check-in/check-out + quantidade de pessoas.
-          </p>
+    </section>
 
-          <div class="mt-5 flex flex-col sm:flex-row gap-3">
-            <a href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1%21%20Quero%20fazer%20uma%20reserva%20no%20Pilar%20Palace.%20Data%3A%20_____%20a%20_____%20%2F%20Pessoas%3A%20_____"
-               target="_blank" rel="noopener"
-               class="rounded-2xl px-5 py-3 font-extrabold text-white bg-[color:var(--green)] hover:opacity-95 transition text-center">
-              Reservar no WhatsApp
-            </a>
+    <!-- Botão menor: Avalie-nos -->
+    <footer class="mt-5">
+      <a href="https://www.google.com/search?q=Pilar+Palace+Hotel+avaliacao"
+         class="block text-center rounded-2xl py-3 font-extrabold text-[14px] active:scale-[0.99] transition-transform"
+         style="background:linear-gradient(135deg, rgba(31,79,163,.12), rgba(24,184,106,.14));
+                color:var(--pp-gray);
+                border:1px solid rgba(31,79,163,.12);">
+        ⭐ Avalie-nos
+      </a>
 
-            <a href="#contato"
-               class="rounded-2xl px-5 py-3 font-extrabold bg-white ring-1 ring-black/10 hover:bg-black/5 transition text-center">
-              Outras formas de contato
-            </a>
-          </div>
-        </div>
+      <p class="text-center text-[11px] mt-3 opacity-70" style="color:var(--pp-gray);">
+        © Pilar Palace Hotel
+      </p>
+    </footer>
 
-        <div class="rounded-3xl p-6 bg-[color:rgba(13,59,142,.06)] border border-[color:rgba(13,59,142,.12)]">
-          <div class="font-extrabold text-[color:var(--blue-1)]">O que enviar no WhatsApp:</div>
-          <ul class="mt-3 space-y-2 text-black/70">
-            <li>• Datas: check-in e check-out</li>
-            <li>• Quantidade de pessoas</li>
-            <li>• Tipo de quarto (se tiver preferência)</li>
-            <li>• Nome e telefone</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contato -->
-  <footer id="contato" class="bg-white border-t border-black/5">
-    <div class="mx-auto max-w-6xl px-4 py-10 grid md:grid-cols-3 gap-8">
-      <div>
-        <div class="flex items-center gap-3">
-          <img src="logo.png" alt="Pilar Palace Hotel" class="h-10 w-10 object-contain" />
-          <div class="font-extrabold text-[color:var(--blue-1)]">Pilar Palace Hotel</div>
-        </div>
-        <p class="mt-3 text-black/70 text-sm">
-          Morro do Pilar • MG <br/>
-          Atendimento via WhatsApp.
-        </p>
-      </div>
-
-      <div>
-        <div class="font-extrabold">Links</div>
-        <div class="mt-3 space-y-2 text-sm">
-          <a class="block font-semibold text-[color:var(--blue-1)] hover:underline" href="#quartos">Quartos</a>
-          <a class="block font-semibold text-[color:var(--blue-1)] hover:underline" href="#reservas">Reservas</a>
-          <a class="block font-semibold text-[color:var(--blue-1)] hover:underline" href="https://instagram.com/SEUINSTAGRAM" target="_blank" rel="noopener">Instagram</a>
-        </div>
-      </div>
-
-      <div>
-        <div class="font-extrabold">Fale com a gente</div>
-        <a
-          href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1%21%20Vim%20pelo%20site%20do%20Pilar%20Palace."
-          target="_blank" rel="noopener"
-          class="mt-3 inline-flex items-center justify-center w-full rounded-2xl px-5 py-3 font-extrabold text-white
-                 bg-[color:var(--green)] hover:opacity-95 transition"
-        >
-          WhatsApp
-        </a>
-
-        <div class="mt-3 text-xs text-black/55">
-          © <span id="year"></span> Pilar Palace Hotel. Todos os direitos reservados.
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  </main>
 </body>
 </html>
